@@ -213,30 +213,42 @@ li a:hover::before {
     text-align: center;
 }
 
-.button::before {
-    content: '';
-    top: 16;
-    bottom: 16;
-    border: 100%;
-    background-color: #D51635;
-}
 
 .button {
-    padding: 15px 30px;
+    padding: 15px 29px;
     background-color: none;
     border: 3px solid #333;
-    border-radius: 32px;
+    border-radius: 35px;
     text-decoration: none;
     color: #333;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: bolder;
+    position: relative;
+    overflow: hidden;
 }
 
-
-.button::before:hover {
-    transform: scaleY(1);
-    transition: 300ms;
+.button:hover {
+    color: #fff;
 }
+
+.button::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -20px;
+    right: -20px;
+    background: #D51635;
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    transform: scale(1);
+    transition: 300ms ease-in-out;
+}
+
+.button:hover::before {
+    transform: scale(15);
+}
+
 
 .back-to-top {
     background: none;
@@ -365,4 +377,43 @@ h2 {
     text-align: center;
 }
 
+}
+
+.typing {
+    position: relative;
+    width: max-content;
+}
+
+.typing::before,.typing::after {
+    content:"";
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position:absolute;
+   
+}
+
+.typing::before{
+    background-color: #e8eddf;
+    animation : typing 4s steps(41) forwards;
+    
+}
+
+.typing::after{
+    background-color: #D51635;
+    width: 6px;
+    animation : typing 4s steps(41) forwards, blink 350ms infinite;
+}
+
+@keyframes typing {
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes blink {
+    to {
+        background : transparent;
+    }
 }
